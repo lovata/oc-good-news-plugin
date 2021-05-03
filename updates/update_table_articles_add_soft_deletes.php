@@ -12,15 +12,16 @@ use October\Rain\Database\Updates\Migration;
  */
 class UpdateTableArticlesAddSoftDeletes extends Migration
 {
+    const TABLE_NAME = 'lovata_good_news_articles';
+
     /**
      * Apply migration
      */
     public function up()
     {
-        if (Schema::hasTable('lovata_good_news_articles')) {
-
-            Schema::table('lovata_good_news_articles', function (Blueprint $table) {
-                $table->softDeletes();
+        if (Schema::hasTable(self::TABLE_NAME)) {
+            Schema::table(self::TABLE_NAME, function (Blueprint $table) {
+                if (!Schema::hasColumn(self::TABLE_NAME, 'deleted_at')) $table->softDeletes();
             });
         }
     }
@@ -30,9 +31,9 @@ class UpdateTableArticlesAddSoftDeletes extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('lovata_good_news_articles')) {
-            Schema::table('lovata_good_news_articles', function (Blueprint $table) {
-                $table->dropSoftDeletes();
+        if (Schema::hasTable(self::TABLE_NAME)) {
+            Schema::table(self::TABLE_NAME, function (Blueprint $table) {
+                if (Schema::hasColumn(self::TABLE_NAME, 'deleted_at')) $table->softDeletes();
             });
         }
     }
