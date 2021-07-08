@@ -1,6 +1,6 @@
 <?php return [
     'plugin'    => [
-        'name'        => 'GoodNews',
+        'name'        => 'Успешные новости',
         'description' => 'Новостной плагин',
     ],
     'field'     => [
@@ -30,7 +30,7 @@
         'sorting_view_count_desc' => 'По количеству просмотров (desc)',
     ],
     'menu'      => [
-        'article'  => 'Новости',
+        'article'  => 'Статьи',
         'category' => 'Категории',
     ],
     'tab'       => [
